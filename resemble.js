@@ -26,14 +26,13 @@ URL: https://github.com/Huddle/Resemble.js
     }
 
     var document =
-        typeof window !== "undefined"
-            ? window.document
-            : {
-                  createElement: function() {
-                      // This will work as long as only createElement is used on window.document
-                      return new Canvas();
-                  }
-              };
+        typeof window !== "undefined" ?
+        window.document : {
+            createElement: function() {
+                // This will work as long as only createElement is used on window.document
+                return new Canvas();
+            }
+        };
 
     var oldGlobalSettings = {};
     var globalOutputSettings = oldGlobalSettings;
@@ -58,7 +57,12 @@ URL: https://github.com/Huddle/Resemble.js
             alpha: 255
         };
 
-        var targetPix = { r: 0, g: 0, b: 0, a: 0 }; // isAntialiased
+        var targetPix = {
+            r: 0,
+            g: 0,
+            b: 0,
+            a: 0
+        }; // isAntialiased
 
         function colorsDistance(c1, c2) {
             return (
@@ -253,7 +257,9 @@ URL: https://github.com/Huddle/Resemble.js
             hiddenImage.onerror = function(err) {
                 hiddenImage.onload = null;
                 hiddenImage.onerror = null; // fixes pollution between calls
-                images.push({ error: err ? err + "" : "Image load error." });
+                images.push({
+                    error: err ? err + "" : "Image load error."
+                });
                 callback();
             };
 
@@ -543,16 +549,25 @@ URL: https://github.com/Huddle/Resemble.js
 
             var skip;
 
-            if (
-                !!largeImageThreshold &&
+            if (!!largeImageThreshold &&
                 ignoreAntialiasing &&
                 (width > largeImageThreshold || height > largeImageThreshold)
             ) {
                 skip = 6;
             }
 
-            var pixel1 = { r: 0, g: 0, b: 0, a: 0 };
-            var pixel2 = { r: 0, g: 0, b: 0, a: 0 };
+            var pixel1 = {
+                r: 0,
+                g: 0,
+                b: 0,
+                a: 0
+            };
+            var pixel2 = {
+                r: 0,
+                g: 0,
+                b: 0,
+                a: 0
+            };
 
             loop(width, height, function(horizontalPos, verticalPos) {
                 if (skip) {
@@ -573,8 +588,7 @@ URL: https://github.com/Huddle/Resemble.js
                     height
                 );
 
-                if (
-                    !getPixelInfo(pixel1, data1, offset, 1) ||
+                if (!getPixelInfo(pixel1, data1, offset, 1) ||
                     !getPixelInfo(pixel2, data2, offset, 2)
                 ) {
                     return;
@@ -602,15 +616,15 @@ URL: https://github.com/Huddle/Resemble.js
                 } else if (
                     ignoreAntialiasing &&
                     (addBrightnessInfo(pixel1), // jit pixel info augmentation looks a little weird, sorry.
-                    addBrightnessInfo(pixel2),
-                    isAntialiased(
-                        pixel1,
-                        data1,
-                        1,
-                        verticalPos,
-                        horizontalPos,
-                        width
-                    ) ||
+                        addBrightnessInfo(pixel2),
+                        isAntialiased(
+                            pixel1,
+                            data1,
+                            1,
+                            verticalPos,
+                            horizontalPos,
+                            width
+                        ) ||
                         isAntialiased(
                             pixel2,
                             data2,
@@ -720,9 +734,9 @@ URL: https://github.com/Huddle/Resemble.js
                 for (key in options.errorColor) {
                     if (options.errorColor.hasOwnProperty(key)) {
                         errorPixelColor[key] =
-                            options.errorColor[key] === void 0
-                                ? errorPixelColor[key]
-                                : options.errorColor[key];
+                            options.errorColor[key] === void 0 ?
+                            errorPixelColor[key] :
+                            options.errorColor[key];
                     }
                 }
             }
@@ -739,9 +753,9 @@ URL: https://github.com/Huddle/Resemble.js
                 errorPixel = options.errorPixel;
             }
 
-            pixelTransparency = isNaN(Number(options.transparency))
-                ? pixelTransparency
-                : options.transparency;
+            pixelTransparency = isNaN(Number(options.transparency)) ?
+                pixelTransparency :
+                options.transparency;
 
             if (options.largeImageThreshold !== undefined) {
                 largeImageThreshold = options.largeImageThreshold;
@@ -771,20 +785,20 @@ URL: https://github.com/Huddle/Resemble.js
                 if (images.length === 2) {
                     if (images[0].error || images[1].error) {
                         data = {};
-                        data.error = images[0].error
-                            ? images[0].error
-                            : images[1].error;
+                        data.error = images[0].error ?
+                            images[0].error :
+                            images[1].error;
                         triggerDataUpdate();
                         return;
                     }
                     width =
-                        images[0].width > images[1].width
-                            ? images[0].width
-                            : images[1].width;
+                        images[0].width > images[1].width ?
+                        images[0].width :
+                        images[1].width;
                     height =
-                        images[0].height > images[1].height
-                            ? images[0].height
-                            : images[1].height;
+                        images[0].height > images[1].height ?
+                        images[0].height :
+                        images[1].height;
 
                     if (
                         images[0].width === images[1].width &&
