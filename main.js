@@ -1,6 +1,6 @@
 var cl = console.log.bind(console);
 // var fileCount = 500***should get amount of files in folder;
-var fileCount = 100;
+var fileCount = 450;
 var path = 'IMAGES/';
 var arrayCount = 0;
 var existingFileArray = [];
@@ -22,7 +22,7 @@ for (let index = 0; index <= fileCount; index++) {
 var duplicateImages = [];
 //compare each existing index vs all others
 var ExistingfilesAmount = existingFileArray.length;
-cl(existingFileArray)
+cl('existingFileArray:', existingFileArray)
 
 for (let index = 0; index < ExistingfilesAmount; index++) {
     var a = existingFileArray[0],
@@ -75,81 +75,3 @@ function comparePics(comparable, compareCounterPart, dupeArr) {
             }
         });
 }
-
-
-
-
-
-//dupeArrect.values(duplicateImages).filter((array)=>array.includes("IMAGES/1030.png"))
-// dupeArrect.keys(duplicateImages).find(key => duplicateImages[key] === dupeArrect.values(duplicateImages).filter((array) => array.includes("IMAGES/1030.png")))
-// pos = duplicateImages.map(function (e) {
-//     return e.hello;
-// }).indexOf('stevie');
-
-// var comparableExistsInDupes = duplicateImages.map(function (obj) {
-//     cl(obj.b, obj.b.indexOf("IMAGES/1030.png"));
-//     return obj.b.indexOf("IMAGES/1030.png");
-// }).indexOf("IMAGES/1030.png");
-
-// index = duplicateImages.findIndex(obj => obj.b.includes("IMAGES/1030.png"));
-
-
-// var comparableExistsInDupes = duplicateImages.filter(function (obj) {
-//     cl(obj.b, obj.b.indexOf("IMAGES/1030.png"));
-//     return obj.b.indexOf("IMAGES/1030.png");
-// }).indexOf("IMAGES/1030.png");
-
-
-
-
-
-//BU
-// function comparePics(comparable, compareCounterPart, dupeArr) {
-//     //console.log(comparable, compareCounterPart)
-
-//     resemble(comparable)
-//         .compareTo(compareCounterPart)
-//         .ignoreColors()
-//         .onComplete(function(data) {
-//             // cl(dupeArrect.values(duplicateImages))
-//             if (
-//                 data.misMatchPercentage < 1 &&
-//                 comparable != compareCounterPart &&
-//                 typeof dupeArr[compareCounterPart] === 'undefined' || dupeArr[compareCounterPart] === null
-//             ) {
-//                 if (
-//                     (typeof dupeArr[comparable] === 'undefined' ||
-//                         dupeArr[comparable] === null) &&
-//                     dupeArrect.values(dupeArr).filter((array) => array.includes(comparable)).length === 0
-//                 ) {
-//                     dupeArr[comparable] = [];
-//                 }
-//                 if (
-//                     dupeArrect.keys(dupeArr).includes(compareCounterPart) === false &&
-//                     (dupeArrect.values(dupeArr).filter((array) => array.includes(comparable)).length === 0 &&
-//                         dupeArrect.values(dupeArr).filter((array) => array.includes(compareCounterPart)).length === 0)
-//                 ) {
-//                     //check if comparable matches existing key
-//                     dupeArrect.keys(dupeArr).forEach((key) => {
-//                         resemble(key)
-//                             .compareTo(comparable)
-//                             .ignoreColors()
-//                             .onComplete(function(data) {
-//                                 if (
-//                                     data.misMatchPercentage < 1 &&
-//                                     key != comparable &&
-//                                     dupeArr[key].includes(comparable) === false
-//                                 ) {
-//                                     dupeArr[key].push(comparable);
-//                                 } else {
-//                                     if (dupeArr[comparable].includes(compareCounterPart) === false) {
-//                                         dupeArr[comparable].push(compareCounterPart);
-//                                     }
-//                                 }
-//                                 cl(dupeArr[key], dupeArr[comparable], key, comparable, compareCounterPart)
-//                             })
-//                     });
-//                 };
-//             }
-//         });
-// }
